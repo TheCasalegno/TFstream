@@ -2,7 +2,7 @@
   "name": "tfstream",
   "version": "1.0.0",
   "description": "TFstream is a powerful tool to enchant your Track &amp; Field streaming animations.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/TheCasalegno/TFstream#readme",
   "dependencies": {
+    "dotenv": "^16.4.1",
+    "ejs": "^3.1.9",
     "env": "^0.0.2",
-    "express": "^4.18.1"
+    "express": "^4.18.2",
+    "mongodb": "^4.4.1",
+    "ws": "^8.16.0"
   }
 }
