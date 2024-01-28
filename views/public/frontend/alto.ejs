@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <lang ="it">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Homepage - RaceWalkLIVE</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@300;500&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+      <style>
+        body {
+          background-color: 0 0 0;
+        }
+
+        p {
+          font-family: "Roboto", sans-serif;
+          font-family: "Ubuntu", sans-serif;
+        }
+
+        .info {
+          max-width: 200px;
+          min-width: 200px;
+          text-align: right;
+        }
+      </style>
+
+      <div class="info">
+        <p id="nome"></p>
+        <p id="squadra"></p>
+        <p id="accredito"></p>
+        <p id="misura"></p>
+        <p id="risultati"></p>
+      </div>
+
+      <script>
+        const socket = new WebSocket("ws://localhost:8880");
+
+        socket.addEventListener("open", function (event) {
+          console.log("Client VIEWER connesso a server INDEX");
+        });
+
+        socket.addEventListener("message", (event) => {
+          let jsonData = JSON.parse(event.data);
+
+          if(jsonData.gara == "alto"){
+            let nome = document.getElementById("nome");
+          let squadra = document.getElementById("squadra");
+          let accredito = document.getElementById("accredito");
+          let misura = document.getElementById("misura");
+          let risultati = document.getElementById("risultati");
+
+          accredito.textContent = `${jsonData.accredito}`;
+          nome.textContent = `${jsonData.nome}`;
+          squadra.textContent = `${jsonData.squadra}`;
+          misura.textContent = `${jsonData.misura}`;
+          risultati.textContent = `${jsonData.risultati}`;
+          }
+        });
+      </script>
+    </body>
+  </lang>
+</html>
